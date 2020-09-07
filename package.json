@@ -1,11 +1,13 @@
 {
   "name": "code-gif-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Generate scrolling GIFs from code snippets",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "tsc",
+    "build": "tsc && npm run copy-template",
+    "copy-template": "cp src/utils/editor_template.html lib/utils",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
@@ -32,7 +34,6 @@
   },
   "homepage": "https://github.com/laudep/code-gif-generator#readme",
   "dependencies": {
-    "app-root-path": "^3.0.0",
     "gif-encoder": "^0.7.2",
     "imagemin": "^7.0.0",
     "imagemin-giflossy": "^5.1.10",
@@ -43,7 +44,11 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/imagemin": "^7.0.0",
     "@types/jest": "^26.0.13",
+    "@types/pngjs": "^3.4.2",
+    "@types/puppeteer": "^3.0.1",
+    "@types/winston": "^2.4.4",
     "jest": "^26.4.2",
     "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
