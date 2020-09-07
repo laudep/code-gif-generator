@@ -1,6 +1,6 @@
 import GifEncoder = require('gif-encoder');
 import png = require('pngjs');
-import imagemin from 'imagemin';
+import imagemin = require('imagemin');
 import imageminGiflossy = require('imagemin-giflossy');
 import imageminGifsicle = require('imagemin-gifsicle');
 import fs = require('fs');
@@ -9,7 +9,7 @@ import path = require('path');
 import log from './log';
 
 /**
- * Simplified interface for the gif-encoder library
+ *  @description Simplified interface for the gif-encoder library
  *
  * @export
  * @interface GifEncoder
@@ -51,7 +51,7 @@ const parsePngBuffer = (buffer: Buffer): Promise<png.PNG> =>
   });
 
 /**
- * Helper class for GIF images
+ *  @description Helper class for GIF images
  *
  * @class Gif
  */

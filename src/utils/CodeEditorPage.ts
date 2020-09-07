@@ -16,7 +16,7 @@ const getEditorHtml = async (code: string, mode: string, theme: string, lineNumb
   return htmlContent;
 };
 
-class EditorPage {
+export class EditorPage {
   private width: number;
   private height: number;
   private browser: puppeteer.Browser;
@@ -62,6 +62,11 @@ class EditorPage {
     };
   }
 
+  close() {
+    log.info('Closing editor page');
+    this.browser.close();
+  }
+
   async takeScreenshotsWhileScrolling(gif: Gif, scrollPercentage: number, maxScreenshots: number) {
     const { pageHeight, startPosition, scrollAmount } = await this.determineScrollOptions(scrollPercentage);
     let scrolledUntil = startPosition;
@@ -88,7 +93,7 @@ class EditorPage {
       }
     }
 
-    this.browser.close();
+    this.close();
     return true;
   }
 }

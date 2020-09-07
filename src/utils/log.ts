@@ -1,5 +1,9 @@
 import winston = require('winston');
 
+/**
+ * @description Constructor for custom logger
+ * @returns custom logger object
+ */
 const getLogger = (): winston.Logger => {
   const alignColorsAndTime = winston.format.combine(
     winston.format.colorize({
