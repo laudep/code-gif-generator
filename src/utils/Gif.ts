@@ -47,7 +47,7 @@ class Gif {
   private gif: GifEncoder;
   private buffer: Buffer | undefined;
 
-  constructor(width = 1280, height = 720, framerate = 7, delay = 0) {
+  constructor(width = 1280, height = 720, framerate = 60, delay = 0) {
     this.width = width;
     this.height = height;
     this.framerate = framerate;
@@ -98,7 +98,7 @@ class Gif {
     });
   }
 
-  async save(fileName: string, compression: undefined | 'lossy' | 'losless') {
+  async save(fileName: string, compression: undefined | 'lossy' | 'losless', outDir = path.resolve(`./output/`)) {
     let buffer: Buffer;
 
     if (!compression) {
@@ -108,7 +108,7 @@ class Gif {
     }
 
     log.info(`Saving ${fileName}`);
-    const imagePath = path.resolve(`./output/${fileName}.gif`);
+    const imagePath = path.resolve(outDir, `${fileName}.gif`);
     return new Promise((resolve, reject) => {
       fs.writeFile(imagePath, buffer, (err) => {
         if (err) {
