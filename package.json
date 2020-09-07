@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest --config config/jestconfig.json",
+    "test": "jest --config config/jest.config.js",
     "build": "tsc -p config/tsconfig.json && npm run copy-template",
     "copy-template": "cp src/utils/editor_template.html lib/utils",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
