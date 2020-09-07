@@ -8,6 +8,12 @@ import path = require('path');
 
 import log from './log';
 
+/**
+ * Simplified interface for the gif-encoder library
+ *
+ * @export
+ * @interface GifEncoder
+ */
 export interface GifEncoder {
   setFrameRate: (framerate: number) => void;
   setDelay: (delay: number) => void;
@@ -34,11 +40,21 @@ const getCompressionPlugin = (lossless: boolean, compressionLevel: 1 | 2 | 3 = 2
         optimizationLevel: compressionLevel,
       });
 
+/**
+ * @description Convert a buffer to PNG
+ * @param buffer the buffer to parse
+ * @returns converted PNG image
+ */
 const parsePngBuffer = (buffer: Buffer): Promise<png.PNG> =>
   new Promise((resolve, reject) => {
     new png.PNG().parse(buffer, (error, data) => (data ? resolve(data) : reject(error)));
   });
 
+/**
+ * Helper class for GIF images
+ *
+ * @class Gif
+ */
 class Gif {
   private width: number;
   private height: number;
