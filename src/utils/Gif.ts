@@ -1,6 +1,6 @@
 import GifEncoder = require('gif-encoder');
 import png = require('pngjs');
-import imagemin = require('imagemin');
+import imagemin from 'imagemin';
 import imageminGiflossy = require('imagemin-giflossy');
 import imageminGifsicle = require('imagemin-gifsicle');
 import fs = require('fs');
@@ -99,13 +99,7 @@ class Gif {
   }
 
   async save(fileName: string, compression: undefined | 'lossy' | 'losless', outDir = path.resolve(`./output/`)) {
-    let buffer: Buffer;
-
-    if (!compression) {
-      buffer = await this.getBuffer();
-    } else {
-      buffer = await this.getCompressedBuffer(compression === 'losless');
-    }
+    const buffer = compression ? await this.getCompressedBuffer(compression === 'losless') : await this.getBuffer();
 
     log.info(`Saving ${fileName}`);
     const imagePath = path.resolve(outDir, `${fileName}.gif`);
