@@ -61,8 +61,12 @@ class Gif {
     this.gif.writeHeader();
   }
 
-  async addFrame(buffer: Buffer) {
-    const image = await parsePngBuffer(buffer);
+  /**
+   * @description Add a frame to the current GIF animaton
+   * @param frameBuffer the frame to add
+   */
+  async addFrame(frameBuffer: Buffer) {
+    const image = await parsePngBuffer(frameBuffer);
     const imageData = image.data;
     log.debug('Adding frame to gif');
     this.gif.addFrame(imageData);
@@ -83,6 +87,10 @@ class Gif {
     return compressedBuffer;
   }
 
+  /**
+   * @description Get the GIF's buffer
+   * @returns the buffer for the GIF
+   */
   getBuffer(): Promise<Buffer> {
     return new Promise((resolve, reject) => {
       if (!this.buffer) {
@@ -98,11 +106,17 @@ class Gif {
     });
   }
 
-  async save(fileName: string, compression: undefined | 'lossy' | 'losless', outDir = path.resolve(`./output/`)) {
+  /**
+   * @description Save the GIF to the filesystem
+   * @param filename the filename for the gif (excluding extension)
+   * @param compression compression to be used on the file
+   * @param outDir the GIF's output directory
+   */
+  async save(filename: string, compression: undefined | 'lossy' | 'losless', outDir = path.resolve(`./output/`)) {
     const buffer = compression ? await this.getCompressedBuffer(compression === 'losless') : await this.getBuffer();
 
-    log.info(`Saving ${fileName}`);
-    const imagePath = path.resolve(outDir, `${fileName}.gif`);
+    log.info(`Saving ${filename}`);
+    const imagePath = path.resolve(outDir, `${filename}.gif`);
     return new Promise((resolve, reject) => {
       fs.writeFile(imagePath, buffer, (err) => {
         if (err) {
