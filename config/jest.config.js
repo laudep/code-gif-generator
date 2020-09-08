@@ -15,4 +15,5 @@ module.exports = {
       tsConfig: path.resolve(__dirname, '../config/tsconfig.json'),
     },
   },
+  testPathIgnorePatterns: [path.resolve(__dirname, '../src/utils/pageEvaluate')],
 };

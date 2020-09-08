@@ -4,7 +4,7 @@ import fs = require('fs');
 import log from './log';
 import Gif from './Gif';
 
-const getEditorHtml = async (code: string, mode: string, theme: string, lineNumbers = true) => {
+export const getEditorHtml = async (code: string, mode: string, theme: string, lineNumbers = true) => {
   const EDITOR_PATH = path.resolve(__dirname, 'editor_template.html');
   let htmlContent = await fs.promises.readFile(EDITOR_PATH, 'utf8');
   // add blank lines to compensate for zoom
@@ -36,6 +36,7 @@ export class EditorPage {
     return screenshotBuffer;
   };
 
+  /* istanbul ignore next */
   async determineScrollOptions(scrollPercentage: number) {
     const getPageHeight = async () =>
       await this.page.evaluate(
@@ -78,11 +79,11 @@ export class EditorPage {
       let screenshotCount = 0;
 
       while (pageHeight > scrolledUntil && screenshotCount < maxScreenshots) {
-        log.info(`pageHeight: ${pageHeight}`);
-        log.info(`scrolledUntil: ${scrolledUntil}`);
         log.info(`Taking screenshot #${screenshotCount + 1}`);
         await gif.addFrame(await this.takeScreenshot());
         log.info(`Scrolling down by ${scrollAmount} pixels.`);
+
+        /* istanbul ignore next */
         await this.page.evaluate((amount) => {
           const scrollElement = document.querySelector('body > div > div.CodeMirror-scroll');
           scrollElement!.scrollBy(0, amount);
