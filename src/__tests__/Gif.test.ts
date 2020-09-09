@@ -127,6 +127,15 @@ test('multi screenshot gif', async (done) => {
   done();
 });
 
+test('default gif filename with unknown mode', () => {
+  gif.setModename('');
+  expect(gif.getDefaultFilename().substring(0, 4)).toEqual('gif_');
+});
+
+test('get string for timestamp', () => {
+  expect(typeof gif.getTimestampString(new Date())).toEqual('string');
+});
+
 afterAll(async () => {
   await editorPageShort.close();
   await editorPageLong.close();

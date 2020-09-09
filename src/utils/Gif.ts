@@ -7,6 +7,7 @@ import fs = require('fs');
 import path = require('path');
 
 import log from './log';
+import { throwStatement } from '@babel/types';
 
 /**
  *  @description Simplified interface for the gif-encoder library
@@ -62,12 +63,14 @@ class Gif {
   private chunks: Buffer[];
   private gif: GifEncoder;
   private buffer: Buffer | undefined;
+  private modeName: string;
 
   constructor(width = 1280, height = 720, framerate = 60, delay = 0) {
     this.width = width;
     this.height = height;
     this.framerate = framerate;
     this.chunks = [];
+    this.modeName = '';
 
     this.gif = new GifEncoder(width, height);
     this.gif.setFrameRate(framerate);
@@ -86,6 +89,10 @@ class Gif {
     const imageData = image.data;
     log.debug('Adding frame to gif');
     this.gif.addFrame(imageData);
+  }
+
+  setModename(mode: string) {
+    this.modeName = mode;
   }
 
   /**
@@ -122,23 +129,38 @@ class Gif {
     });
   }
 
+  getTimestampString(date = new Date()) {
+    const pad2 = (n: Number): string => (n < 10 ? '0' : '') + n;
+    return (
+      date.getFullYear() +
+      pad2(date.getMonth() + 1) +
+      pad2(date.getDate()) +
+      pad2(date.getHours()) +
+      pad2(date.getMinutes()) +
+      pad2(date.getSeconds())
+    );
+  }
+
+  getDefaultFilename() {
+    return `${this.modeName ? this.modeName : 'gif'}_${this.getTimestampString()}`;
+  }
   /**
    * @description Save the GIF to the filesystem
    * @param filename the filename for the gif (excluding extension)
    * @param compression compression to be used on the file
-   * @param outDir the GIF's output directory
+   * @param outDir the output directory for the GIF
+   * @returns the path of the saved GIF
    */
   /* istanbul ignore next */
   async save(
-    filename: string,
-    outDir = path.resolve(`./output/`),
+    filename = this.getDefaultFilename(),
+    outDir = path.resolve('./'),
     compression?: undefined | 'lossy' | 'losless',
   ): Promise<string> {
     const buffer = compression ? await this.getCompressedBuffer(compression === 'losless') : await this.getBuffer();
 
-    log.info(`Saving ${filename}`);
     const imagePath = path.resolve(outDir, `${filename}.gif`);
-    log.info(`Path: ${imagePath}`);
+    log.info(`Saving: ${imagePath}`);
     await fs.promises.writeFile(imagePath, buffer);
     return imagePath;
   }

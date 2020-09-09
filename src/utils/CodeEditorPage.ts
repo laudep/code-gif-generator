@@ -17,12 +17,14 @@ export const getEditorHtml = async (code: string, mode: string, theme: string, l
 };
 
 export class EditorPage {
+  private mode: string;
   private width: number;
   private height: number;
   private browser: puppeteer.Browser;
   private page: puppeteer.Page;
 
-  constructor(width: number, height: number, browser: puppeteer.Browser, page: puppeteer.Page) {
+  constructor(mode: string, width: number, height: number, browser: puppeteer.Browser, page: puppeteer.Page) {
+    this.mode = mode;
     this.width = width;
     this.height = height;
     this.browser = browser;
@@ -69,6 +71,7 @@ export class EditorPage {
   }
 
   async takeScreenshotsWhileScrolling(gif: Gif, scrollPercentage: number, maxScreenshots: number) {
+    gif.setModename(this.mode);
     const { pageHeight, startPosition, scrollAmount } = await this.determineScrollOptions(scrollPercentage);
     let scrolledUntil = startPosition;
 
@@ -128,7 +131,7 @@ const createEditorPage = async (
     pageScaleFactor: 2, // 200%
   });
 
-  const editorPage = new EditorPage(pageWidth, pageHeight, browser, page);
+  const editorPage = new EditorPage(mode, pageWidth, pageHeight, browser, page);
   return editorPage;
 };
 
