@@ -102,7 +102,7 @@ export class EditorPage {
 const createEditorPage = async (
   code: string,
   mode = 'javascript',
-  theme = 'material-dark',
+  theme = 'material-darker',
   lineNumbers = true,
   pageWidth = 1280,
   pageHeight = 720,

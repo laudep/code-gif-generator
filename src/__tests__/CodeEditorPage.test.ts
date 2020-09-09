@@ -1,29 +1,33 @@
 import createEditorPage, { EditorPage, getEditorHtml } from '../utils/CodeEditorPage';
 import Gif from '../utils/Gif';
-const fs = require('fs');
+import fs = require('fs');
+
+import {
+  TEST_CODE_STRING,
+  TEST_MODE,
+  TEST_THEME,
+  TEST_USE_LINE_NUMBERS,
+  TEST_WIDTH,
+  TEST_HEIGHT,
+  TEST_SCROLL_PERCENTAGE,
+  TEST_MAX_SCREENSHOTS,
+} from './constants';
 
 let editorPageShort: EditorPage;
 let editorPageLong: EditorPage;
-const TEST_CODE_STRING = 'Hello World!';
-const TEST_MODE = 'javascript';
-const TEST_THEME = 'default';
-const USE_LINE_NUMBERS = false;
-const TEST_WIDTH = 1280;
-const TEST_HEIGHT = 720;
-const TEST_SCROLL_PERCENTAGE = 100;
-const TEST_MAX_SCREENSHOTS = 2;
-
-const testCode = fs.readFileSync(__filename, 'utf8');
+let testCode: string;
 
 beforeAll(async (done) => {
   editorPageShort = await createEditorPage(
     TEST_CODE_STRING,
     TEST_MODE,
     TEST_THEME,
-    USE_LINE_NUMBERS,
+    TEST_USE_LINE_NUMBERS,
     TEST_WIDTH,
     TEST_HEIGHT,
   );
+  // use the contents of this file as test code
+  testCode = await fs.promises.readFile(__filename, 'utf8');
   editorPageLong = await createEditorPage(testCode);
   done();
 });

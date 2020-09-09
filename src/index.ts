@@ -6,7 +6,7 @@ import { GifConfiguration, PRESETS, DEFAULT_PRESET } from './constants';
 const generateGif = async (
   code: string,
   mode = 'javascript',
-  presetName = 'default',
+  presetName = DEFAULT_PRESET.name,
   theme = 'material-darker',
   lineNumbers = true,
 ) => {
@@ -31,4 +31,4 @@ const generateGif = async (
   return gifBuffer;
 };
 
-module.exports = generateGif;
+export default generateGif;
