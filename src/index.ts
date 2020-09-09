@@ -3,6 +3,7 @@ import log from './utils/log';
 import createEditorPage from './utils/CodeEditorPage';
 import { GifConfiguration, PRESETS, DEFAULT_PRESET } from './constants';
 
+/* istanbul ignore next */
 const generateGif = async (
   code: string,
   mode = 'javascript',

@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "postinstall": "cp -r src/utils/gifsicle.exe node_modules/giflossy/vendor",
     "test": "jest --config config/jest.config.js",
     "build": "tsc -p config/tsconfig.json && npm run copy-template",
     "copy-template": "cp src/utils/editor_template.html lib/utils",
@@ -49,6 +50,7 @@
     "@types/pngjs": "^3.4.2",
     "@types/puppeteer": "^3.0.1",
     "@types/winston": "^2.4.4",
+    "del": "^5.1.0",
     "jest": "^26.4.2",
     "node-sass": "^4.14.1",
     "prettier": "^2.1.1",

@@ -30,7 +30,7 @@ export interface GifEncoder {
  * @param compressionLevel how much optimization is done. Higher levels take longer, but may have better results.
  * @returns an imagemin compression plugin
  */
-const getCompressionPlugin = (lossless: boolean, compressionLevel: 1 | 2 | 3 = 2) =>
+export const getCompressionPlugin = (lossless: boolean, compressionLevel: 1 | 2 | 3 = 2) =>
   lossless
     ? imageminGifsicle({
         optimizationLevel: compressionLevel,
@@ -45,7 +45,7 @@ const getCompressionPlugin = (lossless: boolean, compressionLevel: 1 | 2 | 3 = 2
  * @param buffer the buffer to parse
  * @returns converted PNG image
  */
-const parsePngBuffer = (buffer: Buffer): Promise<png.PNG> =>
+export const parsePngBuffer = (buffer: Buffer): Promise<png.PNG> =>
   new Promise((resolve, reject) => {
     new png.PNG().parse(buffer, (error, data) => (data ? resolve(data) : reject(error)));
   });
@@ -128,22 +128,19 @@ class Gif {
    * @param compression compression to be used on the file
    * @param outDir the GIF's output directory
    */
-  async save(filename: string, compression: undefined | 'lossy' | 'losless', outDir = path.resolve(`./output/`)) {
+  /* istanbul ignore next */
+  async save(
+    filename: string,
+    outDir = path.resolve(`./output/`),
+    compression?: undefined | 'lossy' | 'losless',
+  ): Promise<string> {
     const buffer = compression ? await this.getCompressedBuffer(compression === 'losless') : await this.getBuffer();
 
     log.info(`Saving ${filename}`);
     const imagePath = path.resolve(outDir, `${filename}.gif`);
-    return new Promise((resolve, reject) => {
-      fs.writeFile(imagePath, buffer, (err) => {
-        if (err) {
-          log.error(err);
-          reject(err);
-        }
-
-        log.info(`Gif saved: ${imagePath}`);
-        resolve(imagePath);
-      });
-    });
+    log.info(`Path: ${imagePath}`);
+    await fs.promises.writeFile(imagePath, buffer);
+    return imagePath;
   }
 }
 
