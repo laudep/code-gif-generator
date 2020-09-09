@@ -81,7 +81,7 @@ export class EditorPage {
     } else {
       let screenshotCount = 0;
 
-      while (pageHeight > scrolledUntil && screenshotCount < maxScreenshots) {
+      while (pageHeight >= scrolledUntil && screenshotCount < maxScreenshots) {
         log.info(`Taking screenshot #${screenshotCount + 1}`);
         await gif.addFrame(await this.takeScreenshot());
         log.info(`Scrolling down by ${scrollAmount} pixels.`);

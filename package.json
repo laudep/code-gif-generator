@@ -7,6 +7,7 @@
   "scripts": {
     "postinstall": "cp -r src/utils/gifsicle.exe node_modules/giflossy/vendor",
     "test": "jest --config config/jest.config.js",
+    "create-doc-gifs": "ts-node scripts/createGifsForDocs.ts",
     "build": "tsc -p config/tsconfig.json && npm run copy-template",
     "copy-template": "cp src/utils/editor_template.html lib/utils",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
@@ -55,6 +56,7 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
     "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.0.2"
