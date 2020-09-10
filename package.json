@@ -21,7 +21,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run format && npm run lint",
-      "pre-push": "prepush-if-changed"
+      "pre-push": "prepush-if-changed",
+      "prepare-commit-msg": "./scripts/prepare-commit-msg.sh ${HUSKY_GIT_PARAMS}"
     }
   },
   "prepush-if-changed": {

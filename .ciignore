@@ -1,0 +1,6 @@
+*.md
+LICENSE
+.circleci/*
+.ciignore
+.gitignore
+docs/*
