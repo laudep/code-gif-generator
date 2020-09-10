@@ -5,9 +5,6 @@ import path = require('path');
 import del = require('del');
 import png = require('pngjs');
 
-const TEST_TIMEOUT = 30000;
-jest.setTimeout(TEST_TIMEOUT);
-
 const tmpDir = path.resolve(__dirname, 'tmp');
 
 import {
@@ -43,18 +40,24 @@ let gif = new Gif();
 let image: Buffer;
 
 beforeAll(async (done) => {
-  editorPageShort = await createEditorPage(
-    TEST_CODE_STRING,
-    TEST_MODE,
-    TEST_THEME,
-    TEST_USE_LINE_NUMBERS,
-    TEST_WIDTH,
-    TEST_HEIGHT,
-  );
-  // use the contents of this file as test code
-  testCode = await fs.promises.readFile(__filename, 'utf8');
-  editorPageLong = await createEditorPage(testCode);
-  gif = new Gif();
+  try {
+    editorPageShort = await createEditorPage(
+      TEST_CODE_STRING,
+      TEST_MODE,
+      TEST_THEME,
+      TEST_USE_LINE_NUMBERS,
+      TEST_WIDTH,
+      TEST_HEIGHT,
+    );
+
+    // use the contents of this file as test code
+    testCode = await fs.promises.readFile(__filename, 'utf8');
+    editorPageLong = await createEditorPage(testCode);
+    gif = new Gif();
+  } catch (error) {
+    console.log(error);
+  }
+
   createIfNotExists(tmpDir);
   done();
 });
@@ -87,6 +90,9 @@ test('get scroll options', async (done) => {
 });
 
 test('saving single screenshot gif', async (done) => {
+  const TEST_TIMEOUT = 30000;
+  jest.setTimeout(TEST_TIMEOUT);
+
   await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
   const path = await gif.save('test', tmpDir, 'lossy');
   image = await fs.promises.readFile(path);
