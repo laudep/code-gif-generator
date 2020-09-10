@@ -40,10 +40,6 @@ const generateGif = async (
   await editorPage.takeScreenshotsWhileScrolling(gif, scrollPercentage, maximumScreenshotCount);
 
   return gif;
-  //   const gifBuffer = compression ? await gif.getCompressedBuffer(compression === 'lossless') : await gif.getBuffer();
-
-  //   log.info(`GIF creation done. Returning buffer.`);
-  //   return gifBuffer;
 };
 
-export default generateGif;
+module.exports = generateGif;

@@ -1,4 +1,4 @@
-import generateGif from '../index';
+const generateGif = require('../index');
 import del = require('del');
 import Gif from '../utils/Gif';
 import { TEST_CODE_STRING, TEST_MODE, TEST_THEME, TEST_PRESET, TEST_USE_LINE_NUMBERS } from './constants';
