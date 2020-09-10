@@ -170,10 +170,10 @@ Get the GIF's compressed buffer
 **Parameters:**
 
 Name | Type | Description |
------- | ------ | ------ |
+------ | ------ | ------ | 
 `lossless` | boolean | whether lossless compression is required |
 
-**Returns:** *Promise‹Buffer‹››*
+**Returns:** *Promise‹Buffer›*
 
 the compressed buffer for the GIF
 
