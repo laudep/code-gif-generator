@@ -6,7 +6,12 @@ import { TEST_CODE_STRING, TEST_MODE, TEST_THEME, TEST_PRESET, TEST_USE_LINE_NUM
 let gif: Gif;
 let gifPath: string;
 beforeAll(async (done) => {
-  gif = await generateGif(TEST_CODE_STRING, TEST_PRESET, TEST_MODE, TEST_THEME, TEST_USE_LINE_NUMBERS);
+  gif = await generateGif(TEST_CODE_STRING, {
+    preset: TEST_PRESET,
+    mode: TEST_MODE,
+    theme: TEST_THEME,
+    lineNumbers: TEST_USE_LINE_NUMBERS,
+  });
 
   done();
 });

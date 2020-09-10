@@ -122,7 +122,9 @@ class Gif {
           this.buffer = Buffer.concat(this.chunks);
           resolve(this.buffer);
         });
-        this.gif.on('error', (error) => reject(error));
+        /* istanbul ignore next */
+        //@ts-ignore
+        this.gif.on('error', (error: Error) => reject(error));
       } else {
         resolve(this.buffer);
       }

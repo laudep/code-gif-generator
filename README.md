@@ -45,7 +45,12 @@ import generateGif from '../src/index'
 
 const createReadmeGif = async () => {
    const readmeContent =  await fs.promises.readFile('../README.md', 'utf8');
-   const gif = await generateGif(readmeContent, 'smooth', 'markdown', 'monokai', false);
+   const gif = await generateGif(readmeContent, {
+    preset: 'smooth',
+    mode: 'markdown',
+    theme: 'monokai',
+    lineNumbers: false,
+  });
    const gifPath = await gif.save('readme-content', path.resolve(__dirname, '../docs/img'));
    return gifPath;
 }
@@ -59,7 +64,11 @@ A scrolling GIF in the docs/img folder:
 
 <img alt="Screenshot: 'README.md'" src="./docs/img/readme-content.gif" width="45%">
 
-### API
+## API
+
+### generateGif
+
+
 
 ### Presets
 
