@@ -181,31 +181,12 @@ ___
 
 ### Presets
 
-#### default
-
-- scrolls 10% each frame
-- maximum frames: 100
-
-#### fast
-
-- scrolls fast (20% each frame) 
-- fast processing
-- small filesizes
-- maximum frames: 100
-
-#### smooth
-
-- scrolls very slowly (2% each frame)
-- slow processing
-- large filesize
-- maximum frames: 100
-
-#### ultra
-
-- same as smooth
-- (very) slow processing
-- (very) large filesize
-- maximum frames: 250
+Name | Scrolling |  Processing Time | Maximum Frames | Filesize | 
+------ | ------ | ------ | ------ | ------ |
+default | default (10% each frame) |  default | 100 | small | 
+fast | fast (20% each frame) |  fast | 100 | very small | 
+smooth | slow (2% each frame) |  slow | 100 | large | 
+ultra | slow (2% each frame) |  (very) slow | 250 | (very) large | 
 
 ## Built with
 - [CodeMirror](https://github.com/codemirror/CodeMirror)
