@@ -17,5 +17,6 @@ jobs:
       - run: npm i puppeteer
       - run: npm run build
       - run: cp -r lib/utils/gifsicle.exe node_modules/giflossy/vendor
+      - run: mkdir -m 777 -p src/__tests__/tmp
       - run: npm test
       - uses: codecov/codecov-action@v1
