@@ -111,7 +111,7 @@ const createEditorPage = async (
   pageHeight = 720,
 ) => {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: [],
   });
   const page = await browser.newPage();
 
