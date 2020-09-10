@@ -27,7 +27,7 @@ const generateGif = async (
   }: GenerateGifOptions,
 ) => {
   const loadPreset = (name: string): GifConfiguration => {
-    const presetToLoad = PRESETS.find((preset) => preset.name === name) || DEFAULT_PRESET;
+    const presetToLoad = PRESETS.find((p) => p.name === name) || DEFAULT_PRESET;
     const config: GifConfiguration = { ...presetToLoad };
     return config;
   };

@@ -123,7 +123,7 @@ class Gif {
           resolve(this.buffer);
         });
         /* istanbul ignore next */
-        //@ts-ignore
+        // @ts-ignore
         this.gif.on('error', (error: Error) => reject(error));
       } else {
         resolve(this.buffer);
@@ -132,7 +132,7 @@ class Gif {
   }
 
   getTimestampString(date = new Date()) {
-    const pad2 = (n: Number): string => (n < 10 ? '0' : '') + n;
+    const pad2 = (n: number): string => (n < 10 ? '0' : '') + n;
     return (
       date.getFullYear() +
       pad2(date.getMonth() + 1) +
