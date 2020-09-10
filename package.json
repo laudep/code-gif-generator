@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "postinstall": "cp -r lib/utils/gifsicle.exe node_modules/giflossy/vendor",
+    "postinstall": "cp -r lib/utils/gifsicle.exe ../giflossy/vendor",
     "test": "jest --config config/jest.config.js",
     "create-doc-gifs": "ts-node scripts/createGifsForDocs.ts",
     "typedoc": "typedoc --tsconfig config/tsconfig.json --out typedoc --mode file",
