@@ -5,6 +5,9 @@ import path = require('path');
 import del = require('del');
 import png = require('pngjs');
 
+const TEST_TIMEOUT = 30000;
+jest.setTimeout(TEST_TIMEOUT);
+
 const tmpDir = path.resolve(__dirname, 'tmp');
 
 import {
@@ -84,9 +87,6 @@ test('get scroll options', async (done) => {
 });
 
 test('saving single screenshot gif', async (done) => {
-  const TEST_TIMEOUT = 30000;
-  jest.setTimeout(TEST_TIMEOUT);
-
   await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
   const path = await gif.save('test', tmpDir, 'lossy');
   image = await fs.promises.readFile(path);
