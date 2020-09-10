@@ -26,6 +26,9 @@ test('save gif', async (done) => {
   done();
 });
 
-afterAll(async () => {
-  await del(gifPath);
+afterAll(async (done) => {
+  if (gifPath) {
+    await del(gifPath);
+  }
+  done();
 });
