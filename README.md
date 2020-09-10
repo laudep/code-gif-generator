@@ -72,7 +72,7 @@ generateGif(`console.log('Hello World!')`).then(gif => gif.save());
 
 A single frame GIF in the current working directory:  
 
-![Screenshot: 'Hello World!](https://raw.githubusercontent.com/laudep/code-gif-generator/master/docs/img/generating.gif)
+![Screenshot: 'Hello World!](https://raw.githubusercontent.com/laudep/code-gif-generator/master/docs/img/helloworldjs.gif)
 
 
 ### Gif from this README file
