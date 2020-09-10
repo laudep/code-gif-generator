@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="250" src="./docs/img/generating.gif">
+  <img height="250" src="https://raw.githubusercontent.com/laudep/code-gif-generator/master/docs/img/generating.gif">
 </p>
 <h1 align="center"> code-gif-generator </h1>
 <p align="center">
@@ -72,7 +72,7 @@ generateGif(`console.log('Hello World!')`).then(gif => gif.save());
 
 A single frame GIF in the current working directory:  
 
-![Screenshot: 'Hello World!](./docs/img/helloworldjs.gif)
+![Screenshot: 'Hello World!](https://raw.githubusercontent.com/laudep/code-gif-generator/master/docs/img/generating.gif)
 
 
 ### Gif from this README file
@@ -104,7 +104,7 @@ createReadmeGif().then(gifPath => console.log(`Gif saved: ${gifPath}`));
 
 A scrolling GIF in the docs/img folder:  
 
-<img alt="Screenshot: 'README.md'" src="./docs/img/readme-content.gif" width="45%">
+<img alt="Screenshot: 'README.md'" src="https://github.com/laudep/code-gif-generator/blob/master/docs/img/readme-content.gif?raw=true" width="45%">
 
 ## API
 
