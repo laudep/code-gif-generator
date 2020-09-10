@@ -5,7 +5,7 @@ import generateGif from '../src/index';
 const createReadmeGif = async () => {
   const readmeContent = await fs.promises.readFile(path.resolve(__dirname, '../README.md'), 'utf8');
   const gif = await generateGif(readmeContent, {
-    preset: 'smooth',
+    preset: 'ultra',
     mode: 'markdown',
     theme: 'monokai',
     lineNumbers: false,

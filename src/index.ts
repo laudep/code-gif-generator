@@ -1,28 +1,30 @@
 import Gif from './utils/Gif';
 import log from './utils/log';
 import createEditorPage from './utils/CodeEditorPage';
-import { GifConfiguration, PRESETS, DEFAULT_PRESET } from './constants';
+import { PresetName, GifConfiguration, PRESETS, DEFAULT_PRESET } from './constants';
 
 interface GenerateGifOptions {
   mode: string;
   theme: string;
-  preset: 'fast' | 'default' | 'smooth';
-  linenumbers: boolean;
+  preset: PresetName;
+  lineNumbers: boolean;
 }
 
 /* istanbul ignore next */
 /**
  * @description Generate an animated GIF for a code snippet
  * @param code the code snippet
- * @param mode the snippet's programming language (CodeMirror mode)
- * @param preset the preset name for the GIF
- * @param theme the theme to be applied to the code (CodeMirror theme)
- * @param linenumbers whether to display line numbers
- * @returns the buffer for the animated GIF
+ * @param options the options for the generated GIF
+ * @returns instance of the GIF helper class
  */
 const generateGif = async (
   code: string,
-  { mode = 'javascript', theme = 'material-darker', preset = DEFAULT_PRESET.name, lineNumbers = true },
+  {
+    mode = 'javascript',
+    theme = 'material-darker',
+    preset = DEFAULT_PRESET.name,
+    lineNumbers = true,
+  }: GenerateGifOptions,
 ) => {
   const loadPreset = (name: string): GifConfiguration => {
     const presetToLoad = PRESETS.find((preset) => preset.name === name) || DEFAULT_PRESET;

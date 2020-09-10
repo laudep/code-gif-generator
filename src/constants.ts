@@ -8,8 +8,10 @@ export interface GifConfiguration {
   maximumScreenshotCount: number;
 }
 
+export type PresetName = 'fast' | 'default' | 'smooth' | 'ultra';
+
 export interface Preset extends GifConfiguration {
-  name: string;
+  name: PresetName;
 }
 
 export const DEFAULT_PRESET: Preset = {
@@ -23,6 +25,14 @@ export const DEFAULT_PRESET: Preset = {
   maximumScreenshotCount: 100,
 };
 
+export const SMOOTH_PRESET: Preset = {
+  ...DEFAULT_PRESET,
+  name: 'smooth',
+  framerate: 7,
+  delay: 120,
+  scrollPercentage: 2,
+};
+
 export const PRESETS: Preset[] = [
   {
     ...DEFAULT_PRESET,
@@ -32,11 +42,10 @@ export const PRESETS: Preset[] = [
     scrollPercentage: 20,
   },
   DEFAULT_PRESET,
+  SMOOTH_PRESET,
   {
-    ...DEFAULT_PRESET,
+    ...SMOOTH_PRESET,
     name: 'ultra',
-    framerate: 7,
-    delay: 120,
-    scrollPercentage: 2,
+    maximumScreenshotCount: 250,
   },
 ];
