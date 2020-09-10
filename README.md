@@ -168,7 +168,7 @@ ___
 Get the GIF's compressed buffer
 
 **Parameters:**
-
+     
 Name | Type | Description |
 ------ | ------ | ------ |
 `lossless` | boolean | whether lossless compression is required |
