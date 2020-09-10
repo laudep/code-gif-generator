@@ -21,8 +21,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run format && npm run lint",
-      "pre-push": "git-branch-is -r \"^((?!master).)*$\" || (git-branch-is master && npm test)"
+      "pre-push": "prepush-if-changed"
     }
+  },
+  "prepush-if-changed": {
+    "src/**/*.ts?(x)": "git-branch-is -r \"^((?!master).)*$\" || (git-branch-is master && npm test)"
   },
   "repository": {
     "type": "git",
