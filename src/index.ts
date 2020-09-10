@@ -42,4 +42,5 @@ const generateGif = async (
   return gif;
 };
 
-module.exports = generateGif;
+exports.default = generateGif;
+module.exports = exports.default;

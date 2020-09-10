@@ -1,6 +1,6 @@
 import fs = require('fs');
 import path = require('path');
-import generateGif from '../src/index';
+const generateGif = require('../src/index');
 
 const createReadmeGif = async () => {
   const readmeContent = await fs.promises.readFile(path.resolve(__dirname, '../README.md'), 'utf8');
