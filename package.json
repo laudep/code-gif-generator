@@ -28,7 +28,7 @@
   },
   "run-if-changed": {
     "README.md": "npm run create-doc-gifs"
-},
+  },
   "prepush-if-changed": {
     "src/**/*.ts?(x)": "git-branch-is -r \"^((?!master).)*$\" || (git-branch-is master && npm test)"
   },
