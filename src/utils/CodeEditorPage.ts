@@ -70,6 +70,7 @@ export class EditorPage {
     this.browser.close();
   }
 
+  /* istanbul ignore next */
   async takeScreenshotsWhileScrolling(gif: Gif, scrollPercentage: number, maxScreenshots: number) {
     gif.setModename(this.mode);
     const { pageHeight, startPosition, scrollAmount } = await this.determineScrollOptions(scrollPercentage);

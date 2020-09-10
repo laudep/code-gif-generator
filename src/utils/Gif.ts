@@ -100,6 +100,7 @@ class Gif {
    * @param lossless whether lossless compression is required
    * @returns the compressed buffer for the GIF
    */
+  /* istanbul ignore next */
   async getCompressedBuffer(lossless: boolean) {
     const buffer = await this.getBuffer();
     const plugin = getCompressionPlugin(lossless);
