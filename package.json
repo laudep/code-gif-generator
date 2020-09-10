@@ -9,7 +9,7 @@
     "test": "jest --config config/jest.config.js",
     "create-doc-gifs": "ts-node scripts/createGifsForDocs.ts",
     "typedoc": "typedoc --tsconfig config/tsconfig.json --out typedoc --mode file",
-    "build": "tsc -p config/tsconfig.json && npm run copy-template && npm run create-doc-gifs && cp -r src/utils/gifsicle.exe lib/utils",
+    "build": "tsc -p config/tsconfig.json && npm run copy-template && cp -r src/utils/gifsicle.exe lib/utils",
     "copy-template": "cp src/utils/editor_template.html lib/utils",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "tslint -c config/tslint.json -p config/tsconfig.json",
@@ -21,10 +21,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run format && npm run lint",
+      "post-commut": "run-if-changed",
       "pre-push": "prepush-if-changed",
       "prepare-commit-msg": "./scripts/prepare-commit-msg.sh ${HUSKY_GIT_PARAMS}"
     }
   },
+  "run-if-changed": {
+    "README.md": "npm run create-doc-gifs"
+},
   "prepush-if-changed": {
     "src/**/*.ts?(x)": "git-branch-is -r \"^((?!master).)*$\" || (git-branch-is master && npm test)"
   },
@@ -57,6 +61,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@hkdobrev/run-if-changed": "^0.3.1",
     "@types/imagemin": "^7.0.0",
     "@types/jest": "^26.0.13",
     "@types/pngjs": "^3.4.2",
