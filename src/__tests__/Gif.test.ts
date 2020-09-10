@@ -18,6 +18,9 @@ import {
   TEST_MAX_SCREENSHOTS,
 } from './constants';
 
+const TEST_TIMEOUT = 30000;
+jest.setTimeout(TEST_TIMEOUT);
+
 /**
  * @description Cleans filesystem output created during test execution
  */
@@ -90,9 +93,6 @@ test('get scroll options', async (done) => {
 });
 
 test('saving single screenshot gif', async (done) => {
-  const TEST_TIMEOUT = 30000;
-  jest.setTimeout(TEST_TIMEOUT);
-
   await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
   const path = await gif.save('test', tmpDir, 'lossy');
   image = await fs.promises.readFile(path);
@@ -120,9 +120,8 @@ test('parse empty object to png', async (done) => {
 });
 
 test('multi screenshot gif', async (done) => {
-  const TEST_TIMEOUT = 30000;
   const multiScreenshotGif = new Gif();
-  jest.setTimeout(TEST_TIMEOUT);
+
   expect(
     await editorPageLong.takeScreenshotsWhileScrolling(
       multiScreenshotGif,
