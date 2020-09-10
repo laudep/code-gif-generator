@@ -92,22 +92,24 @@ test('get scroll options', async (done) => {
   done();
 });
 
-test('saving single screenshot gif', async (done) => {
-  await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
-  console.log('PATH: ', tmpDir);
-  const path = await gif.save('test', tmpDir, 'lossy');
-  image = await fs.promises.readFile(path);
-  expect(image).toBeInstanceOf(Buffer);
-  done();
-});
+if (process.platform === 'win32') {
+  test('saving single screenshot gif', async (done) => {
+    await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
+    console.log('PATH: ', tmpDir);
+    const path = await gif.save('test', tmpDir, 'lossy');
+    image = await fs.promises.readFile(path);
+    expect(image).toBeInstanceOf(Buffer);
+    done();
+  });
+
+  test('lossy compressed gif buffer', async (done) => {
+    expect(await gif.getCompressedBuffer(false)).toBeInstanceOf(Buffer);
+    done();
+  });
+}
 
 test('determine compression plugin', () => {
   expect(getCompressionPlugin(true, 2)).toBeInstanceOf(Object);
-});
-
-test('lossy compressed gif buffer', async (done) => {
-  expect(await gif.getCompressedBuffer(false)).toBeInstanceOf(Buffer);
-  done();
 });
 
 test('parse gif to png', async (done) => {
