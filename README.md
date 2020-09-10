@@ -3,17 +3,52 @@
 </p>
 <h1 align="center"> code-gif-generator </h1>
 <p align="center">
-  <b>Generate scrolling GIFs from code snippets</b>
+  <b>Generate scrolling GIFs from code snippets 🚀</b>
 </p>
 
-[![NPM Version][npm-badge]][npm-url] 
-[![Github Actions][gh-actions-badge]][gh-actions-url]
-[![Codecov][codecov-badge]][codecov-url]
+<p align='center'>
+  <a href='https://www.npmjs.com/package/code-gif-generator'>
+    <img src='https://img.shields.io/npm/v/code-gif-generator.svg' alt='npm version'>
+  </a>
+  <a href='https://codecov.io/gh/laudep/code-gif-generator'>
+    <img src='https://codecov.io/gh/laudep/code-gif-generator/branch/master/graph/badge.svg' alt='code coverage'>
+  </a>
+  <a href='https://github.com/laudep/code-gif-generator/actions'>
+    <img src='https://img.shields.io/github/workflow/status/laudep/code-gif-generator/test' alt='CI status'>
+  </a>
+</p>
 
 ## Description
 Code-gif-generator is a tool for generating animated GIF files from code snippets.  
 Use them to spice up your blog posts, documentation, or README files.  
-Build on top of CodeMirror, more than 150 programming languages are supported.
+Build on top of the CodeMirror editor, more than 150 programming languages are supported.
+
+- [Online demo](#online-demo)
+- [Installation](#installation)
+- [Usage](#usage)
+  * [Minimal example](#minimal-example)
+    + [Code](#code)
+    + [Output](#output)
+  * [Gif from this README file](#gif-from-this-readme-file)
+    + [Code](#code-1)
+    + [Output](#output-1)
+- [API](#api)
+  * [generateGif](#api)
+  * [Gif.save](#--gif--)
+  * [Gif.getBuffer](#--gif--)
+  * [Gif.getCompressedBuffer](#--gif--)
+  * [Presets](#presets)
+    + [default](#default)
+    + [fast](#fast)
+    + [smooth](#smooth)
+    + [ultra](#ultra)
+- [Built with](#built-with)
+- [License](#license)
+
+## Online demo
+
+Check out the online demo:  
+[codetogif.io](https://codetogif.io/)
 
 ## Installation
 
@@ -180,10 +215,3 @@ ___
 
 ## License
 [MIT](./LICENSE)
-
-[npm-badge]: https://img.shields.io/npm/v/code-gif-generator.svg
-[npm-url]: https://www.npmjs.com/package/code-gif-generator
-[codecov-badge]: https://codecov.io/gh/laudep/code-gif-generator/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/laudep/code-gif-generator
-[gh-actions-badge]: https://img.shields.io/github/workflow/status/laudep/code-gif-generator/test
-[gh-actions-url]: https://github.com/laudep/code-gif-generator/actions
