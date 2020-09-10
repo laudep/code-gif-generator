@@ -14,5 +14,6 @@ jobs:
         with:
           node-version: '12'
       - run: npm install --ignore-scripts
+      - run: PUPPETEER_PRODUCT=firefox npm i puppeteer
       - run: npm test
       - uses: codecov/codecov-action@v1
