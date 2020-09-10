@@ -137,7 +137,11 @@ test('get string for timestamp', () => {
 });
 
 afterAll(async () => {
-  await editorPageShort.close();
-  await editorPageLong.close();
+  if (editorPageShort) {
+    await editorPageShort.close();
+  }
+  if (editorPageLong) {
+    await editorPageLong.close();
+  }
   await cleanup();
 });
