@@ -6,6 +6,9 @@
   <b>Generate scrolling GIFs from code snippets</b>
 </p>
 
+[![NPM Version][npm-badge]][npm-url] 
+[![Github Actions][gh-actions-badge]][gh-actions-url]
+[![Codecov][codecov-badge]][codecov-url]
 
 ## Description
 Code-gif-generator is a tool for generating animated GIF files from code snippets.  
@@ -177,3 +180,10 @@ ___
 
 ## License
 [MIT](./LICENSE)
+
+[npm-badge]: https://img.shields.io/npm/v/code-gif-generator.svg
+[npm-url]: https://www.npmjs.com/package/code-gif-generator
+[codecov-badge]: https://codecov.io/gh/laudep/code-gif-generator/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/laudep/code-gif-generator
+[gh-actions-badge]: https://img.shields.io/github/workflow/status/laudep/code-gif-generator/test
+[gh-actions-url]: https://github.com/laudep/code-gif-generator/actions
