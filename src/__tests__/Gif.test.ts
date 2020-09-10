@@ -26,16 +26,6 @@ jest.setTimeout(TEST_TIMEOUT);
  */
 const cleanup = async () => del([tmpDir]);
 
-/**
- * @description Create a directory if it doesn't exist
- * @param directory the directory to check/create
- */
-const createIfNotExists = (directory: fs.PathLike) => {
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory);
-  }
-};
-
 let editorPageShort: EditorPage;
 let editorPageLong: EditorPage;
 let testCode: string;
@@ -61,7 +51,7 @@ beforeAll(async (done) => {
     console.log(error);
   }
 
-  createIfNotExists(tmpDir);
+  await fs.promises.mkdir(tmpDir);
   done();
 });
 
