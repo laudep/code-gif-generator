@@ -156,7 +156,7 @@ class Gif {
   /* istanbul ignore next */
   async save(
     filename = this.getDefaultFilename(),
-    outDir = path.resolve('./'),
+    outDir = process.cwd(),
     compression?: undefined | 'lossy' | 'losless',
   ): Promise<string> {
     const buffer = compression ? await this.getCompressedBuffer(compression === 'losless') : await this.getBuffer();
