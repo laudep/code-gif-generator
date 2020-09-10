@@ -94,7 +94,7 @@ test('get scroll options', async (done) => {
 
 test('saving single screenshot gif', async (done) => {
   await editorPageShort.takeScreenshotsWhileScrolling(gif, TEST_SCROLL_PERCENTAGE, TEST_MAX_SCREENSHOTS);
-  console.log('PATH: ', path);
+  console.log('PATH: ', tmpDir);
   const path = await gif.save('test', tmpDir, 'lossy');
   image = await fs.promises.readFile(path);
   expect(image).toBeInstanceOf(Buffer);
