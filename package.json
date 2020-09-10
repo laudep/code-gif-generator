@@ -5,11 +5,11 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "postinstall": "cp -r src/utils/gifsicle.exe node_modules/giflossy/vendor",
+    "postinstall": "cp -r lib/utils/gifsicle.exe node_modules/giflossy/vendor",
     "test": "jest --config config/jest.config.js",
     "create-doc-gifs": "ts-node scripts/createGifsForDocs.ts",
     "typedoc": "typedoc --tsconfig config/tsconfig.json --out typedoc --mode file",
-    "build": "tsc -p config/tsconfig.json && npm run copy-template && npm run create-doc-gifs",
+    "build": "tsc -p config/tsconfig.json && npm run copy-template && npm run create-doc-gifs && cp -r src/utils/gifsicle.exe lib/utils",
     "copy-template": "cp src/utils/editor_template.html lib/utils",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "tslint -c config/tslint.json -p config/tsconfig.json",
