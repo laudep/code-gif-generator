@@ -33,6 +33,8 @@ let gif = new Gif();
 let image: Buffer;
 
 beforeAll(async (done) => {
+  await fs.promises.mkdir(tmpDir);
+  
   try {
     editorPageShort = await createEditorPage(
       TEST_CODE_STRING,
@@ -51,7 +53,6 @@ beforeAll(async (done) => {
     console.log(error);
   }
 
-  await fs.promises.mkdir(tmpDir);
   done();
 });
 
