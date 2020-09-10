@@ -7,6 +7,9 @@
 </p>
 
 ## Description
+Code-gif-generator is a tool for generating animated GIF files from code snippets.  
+Use them to spice up your blog posts, documentation, or README files.  
+Build on top of CodeMirror, more than 150 programming languages are supported.
 
 ## Installation
 
