@@ -15,5 +15,7 @@ jobs:
           node-version: '12'
       - run: npm install --ignore-scripts
       - run: npm i puppeteer
+      - run: npm run build
+      - run: bpm run postinstall
       - run: npm test
       - uses: codecov/codecov-action@v1
