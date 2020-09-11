@@ -104,14 +104,7 @@ createReadmeGif().then(gifPath => console.log(`Gif saved: ${gifPath}`));
 
 A scrolling GIF in the docs/img folder:  
 
-<!-- <img alt="Screenshot: 'README.md'" src="https://github.com/laudep/code-gif-generator/blob/master/docs/img/readme-content.gif?raw=true" width="45%"> -->
-
-
-<div style="width: 1280px; height: 720px; position: relative;">
-   <img id="image1" style="position: relative;" src="./docs/img/laptop.png" alt="..." />
-   <!-- <img id="image2" style="width: 514px; height: 345px; position: absolute; top: 4px; left: 99px; border-radius: 3%;" src="https://github.com/laudep/code-gif-generator/blob/master/docs/img/readme-content.gif?raw=true" alt="..." /> -->
-   <img id="image2" style="width: 500px; height: 322px; position: absolute; top: 12px; left: 105px; border-radius: 3%;" src="https://github.com/laudep/code-gif-generator/blob/master/docs/img/readme-content.gif?raw=true" alt="..." />
-</div>
+<img alt="Screenshot: 'README.md'" src="https://github.com/laudep/code-gif-generator/blob/master/docs/img/readme-content.gif?raw=true" width="45%">
 
 ## API
 
