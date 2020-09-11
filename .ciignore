@@ -3,4 +3,5 @@ LICENSE
 .circleci/*
 .ciignore
 .gitignore
+.gitattributes
 docs/*
