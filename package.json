@@ -54,7 +54,7 @@
     "gif-encoder": "^0.7.2",
     "imagemin": "^7.0.0",
     "imagemin-giflossy": "^5.1.10",
-    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-gifsicle": "^6.0.1",
     "nodemon": "^2.0.4",
     "pngjs": "^3.4.0",
     "puppeteer": "^5.2.1",
