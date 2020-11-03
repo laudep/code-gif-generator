@@ -65,7 +65,7 @@
     "@types/imagemin": "^7.0.0",
     "@types/jest": "^26.0.13",
     "@types/pngjs": "^3.4.2",
-    "@types/puppeteer": "^3.0.1",
+    "@types/puppeteer": "^5.4.0",
     "@types/winston": "^2.4.4",
     "del": "^6.0.0",
     "git-branch-is": "^4.0.0",
