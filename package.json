@@ -57,7 +57,7 @@
     "imagemin-gifsicle": "^6.0.1",
     "nodemon": "^2.0.4",
     "pngjs": "^3.4.0",
-    "puppeteer": "^5.2.1",
+    "puppeteer": "^9.1.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
